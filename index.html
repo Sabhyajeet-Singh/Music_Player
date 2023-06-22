@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <script src="https://kit.fontawesome.com/4fe9f78a8e.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* -------------------------- music player wrapper----------------------------- */
+
+        .music__player__wrapper {
+            height: 85vh;
+            width: 300px;
+            /* border: 1px solid black; */
+            position: relative;
+            padding: 10px;
+            border-radius: 13px;
+            background: whitesmoke;
+            box-shadow: 20px 20px 27px #bebebe79,
+                -20px -20px 27px #d7d5d59a;
+
+        }
+
+        /* ---------------------------homepage header------------------------------------- */
+
+        .music__player__wrapper #home__Page .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 10px;
+        }
+
+        /* ----------------------------logo------------------------------------- */
+
+        .music__player__wrapper #home__Page .header .logo {
+
+            /* font-size: 20px; */
+        }
+
+        /* ---------------------------user icon-------------------------- */
+
+        .music__player__wrapper #home__Page .header .usericon {
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .music__player__wrapper #home__Page .header .usericon img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+
+        }
+
+        /* --------------------trending slider----------------------------- */
+
+        .inner__trending__slider {
+            margin: 0 10px;
+            /* border: 1px solid black; */
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            width: 260px;
+
+        }
+
+        .trending__slider h4 {
+            margin: 10px;
+        }
+
+        .inner__trending__slider div {
+            display: inline-block;
+            height: 100px;
+            width: 210px;
+            /* border: 1px solid black; */
+            border-radius: 10px;
+            margin: 10px 8px;
+            position: relative;
+            overflow: hidden;
+
+        }
+
+        .trending__slider div img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        /* trending slider next btn */
+
+        #next {
+            float: right;
+            position: relative;
+            bottom: 90px;
+            padding: 3px;
+            background-color: white;
+            border-radius: 50%;
+        }
+
+        #prev {
+            opacity: 0;
+            position: relative;
+            bottom: 90px;
+            padding: 3px;
+            background-color: white;
+            border-radius: 50%;
+        }
+
+
+        /* music page  */
+
+        #music__page__wrapper {
+            height: 100%;
+            width: 100%;
+            top: 0;
+            right: -310px;
+            position: absolute;
+            border-radius: 13px;
+            background: whitesmoke;
+            padding: 10px;
+            display: none;
+            transition: 1s;
+        }
+
+        #music__page__wrapper .music__inner__wrapper {
+            text-align: center;
+        }
+
+        .coverPic {
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+            margin: 25px auto;
+            /* animation: playing 2s linear infinite; */
+            transition: .5s;
+        }
+
+        .coverPic img {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+
+        }
+
+        /* .Playing__song__animation{
+            animation: playing 5s linear infinite;
+        } */
+
+        @keyframes playing {
+
+            0% {
+                transform: rotate(0deg) scale(1);
+
+            }
+
+            50% {
+                transform: rotate(180deg) scale(.98);
+            }
+
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
+
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .controls i {
+            font-size: 22px;
+        }
+
+        .controls #pauseBtn {
+            font-size: 25px;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="music__player__wrapper">
+
+        <!-- ----------------Homepage------------------ -->
+
+        <div id="home__Page" class="container__wrapper">
+
+            <!-- --------------Homepage header----------------- -->
+
+            <div class="header">
+                <h3 class="logo">Branding</h3>
+                <div class="usericon"><img src="userIcon.jpg" alt="" srcset=""></div>
+            </div>
+
+            <!-- ----------------Trending slider-------------------- -->
+
+            <div class="trending__slider">
+                <h4>Trending</h4>
+
+                <div id="trending__Songs__Section" class="inner__trending__slider">
+                    <div id="trending__song2"><img src="trend4.jpeg" alt=""></div>
+                    <div id="trending__song3"><img src="trend5.webp" alt=""></div>
+                    <div id="trending__song4"><img src="trend1.webp" alt=""></div>
+                    <div id="trending__song5"><img src="trend2.webp" alt=""></div>
+                    <div id="trending__song6"><img src="trend3.jpg" alt=""></div>
+                    <div id="trending__song1"><img src="saiyyan.jpg" alt=""></div>
+                </div>
+
+                <span id="next"><i class="fa-solid fa-circle-chevron-right"></i></span>
+                <span id="prev"><i class="fa-solid fa-circle-chevron-left"></i></span>
+            </div>
+
+
+
+            <!-- ----------------Music__Page------------------------ -->
+
+            <div id="music__page__wrapper">
+                <div class="music__Page_header"></div>
+
+                <div class="music__inner__wrapper">
+                    <h3 id="songName">Song Name</h3>
+                    <h5 id="singerName">Singer Name</h5>
+
+                    <div class="coverPic">
+                        <img src="trend4.jpeg" id="coverImage" alt="" srcset="">
+                    </div>
+
+                    <div class="controls">
+                        <i class="fa-solid fa-chevron-left"></i>
+                        <i id="play__pause__btn" class="fa-regular fa-circle-pause"></i>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Javascript here -->
+
+    <script>
+
+        // all targeting of dom elements
+
+        const prevBtn = document.getElementById('prev')
+        const nextBtn = document.getElementById('next')
+        const play__Pause__BTn = document.getElementById('play__pause__btn')
+
+        const music__page__wrapper = document.getElementById('music__page__wrapper');
+        const trending__Songs__Section = document.getElementById('trending__Songs__Section');
+        const song = new Audio('295.mp3')
+
+        const coverImage = document.getElementById('coverImage');
+
+        // music player
+
+        // all song list 
+
+
+        const songs__obj = {
+
+            sidhu__295: '295.mp3',
+            saiyyan: 'saiyyan 7.mp3'
+        }
+
+        const trending__song2 = document.getElementById('trending__song2').addEventListener('click', () => {
+
+            song.play()
+            let song__status = 'playing';
+            coverImage.style.animation = ' playing 15s linear infinite';
+            music__page__wrapper.style.display = 'block';
+            music__page__wrapper.style.left = 0
+
+
+            play__Pause__BTn.addEventListener('click', () => {
+
+                if (play__Pause__BTn == "playing") {
+
+                    song.pause();
+                    play__Pause__BTn.setAttribute('class', 'fa-regular fa-circle-play')
+                    coverImage.style.animation = 'none'
+                }
+                else {
+                    song.play();
+                    play__Pause__BTn.setAttribute('class', 'fa-regular fa-circle-pause')
+                    coverImage.style.animation = ' playing 15s linear infinite';
+                }
+
+            })
+            
+
+        })
+
+
+
+
+
+
+        // show / hide next / prev btn on scrolling trending slider
+
+
+
+
+        trending__Songs__Section.addEventListener('scroll', () => {
+
+            console.log(trending__Songs__Section.scrollLeft)
+
+            if (trending__Songs__Section.scrollLeft > 0) {
+                prevBtn.style.opacity = 1;
+            }
+            else {
+                prevBtn.style.opacity = 0;
+
+            }
+
+        })
+
+
+    </script>
+
+</body>
+
+</html>
